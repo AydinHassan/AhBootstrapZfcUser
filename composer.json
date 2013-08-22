@@ -1,0 +1,29 @@
+{
+    "name":         "aydin-hassan/ah-bootstrap-zfcuser",
+    "description":  "ZF2 Module to style ZfcUser forms with Bootstrap 3",
+    "type":         "library",
+    "license":      "MIT",
+    "homepage":     "https://github.com/AydinHassan/AhBootstrapZfcUser",
+    "keywords": [
+        "zf2",
+        "zfc-user",
+    ],
+    "authors": [
+        {
+            "name":      "Aydin Hassan",
+            "email":     "aydin@hotmail.co.uk",
+            "homepage":  "https://github.com/AydinHassan",
+            "role":      "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.3",
+        "zf-commons/zfc-user": ">=0.1",
+    },
+    "autoload": {
+        "psr-0": {
+            "AhUser\\": "src/"
+        }
+    }
+}

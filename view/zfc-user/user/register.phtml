@@ -1,0 +1,116 @@
+<?php
+$form = $this->registerForm;
+$form->prepare();
+$form->setAttribute('action', $this->url('zfcuser/register'));
+$form->setAttribute('method', 'post');
+$form->setAttribute('class', 'form-horizontal');
+?>
+<?php echo $this->form()->openTag($form) ?>
+<fieldset>
+    <legend>Register</legend>
+    
+    <?php $form->get('email')->setAttribute('class','form-control'); ?>
+    <?php $form->get('email')->setLabelAttributes(array('class' => 'control-label col-lg-2')); ?>
+    <div class="form-group <?php if ($this->formElementErrors($form->get('email'))) echo 'has-error'; ?>">
+        <?php echo $this->formLabel($form->get('email')); ?>
+            <div class="input-group col-lg-3">
+                <span class="input-group-addon">@</span>
+                <?php echo $this->formInput($form->get('email')) ?>
+            </div>
+            <?php echo $this->formElementErrors()
+                    ->setMessageOpenFormat('<span class="help-block">')
+                    ->setMessageSeparatorString('</span><span class="help-block">')
+                    ->setMessageCloseString('</span>')
+                    ->render($form->get('email')); ?>
+    </div>
+    
+    <?php $form->get('display_name')->setAttribute('class','form-control'); ?>
+    <?php $form->get('display_name')->setLabelAttributes(array('class' => 'control-label col-lg-2')); ?>
+    <div class="form-group <?php if ($this->formElementErrors($form->get('display_name'))) echo 'has-error'; ?>">
+        <?php echo $this->formLabel($form->get('display_name')); ?>
+            <div class="input-group col-lg-3">
+                <span class="input-group-addon glyphicon glyphicon-user"></span>
+                <?php echo $this->formInput($form->get('display_name')) ?>
+            </div>
+            <?php echo $this->formElementErrors()
+                    ->setMessageOpenFormat('<span class="help-block">')
+                    ->setMessageSeparatorString('</span><span class="help-block">')
+                    ->setMessageCloseString('</span>')
+                    ->render($form->get('display_name')); ?>
+    </div>
+    
+    <?php if($form->has('firstName')): ?>
+    <?php $form->get('firstName')->setAttribute('class','form-control'); ?>
+    <?php $form->get('firstName')->setLabelAttributes(array('class' => 'control-label col-lg-2')); ?>
+    <div class="form-group <?php if ($this->formElementErrors($form->get('firstName'))) echo 'has-error'; ?>">
+        <?php echo $this->formLabel($form->get('firstName')); ?>
+            <div class="input-group col-lg-3">
+                <span class="input-group-addon glyphicon glyphicon-user"></span>
+                <?php echo $this->formInput($form->get('firstName')) ?>
+            </div>
+            <?php echo $this->formElementErrors()
+                    ->setMessageOpenFormat('<span class="help-block">')
+                    ->setMessageSeparatorString('</span><span class="help-block">')
+                    ->setMessageCloseString('</span>')
+                    ->render($form->get('firstName')); ?>
+    </div>
+    <?php endif; ?>
+    
+    <?php if($form->has('lastName')): ?>
+    <?php $form->get('lastName')->setAttribute('class','form-control'); ?>
+    <?php $form->get('lastName')->setLabelAttributes(array('class' => 'control-label col-lg-2')); ?>
+    <div class="form-group <?php if ($this->formElementErrors($form->get('lastName'))) echo 'has-error'; ?>">
+        <?php echo $this->formLabel($form->get('lastName')); ?>
+            <div class="input-group col-lg-3">
+                <span class="input-group-addon glyphicon glyphicon-user"></span>
+                <?php echo $this->formInput($form->get('lastName')) ?>
+            </div>
+            <?php echo $this->formElementErrors()
+                    ->setMessageOpenFormat('<span class="help-block">')
+                    ->setMessageSeparatorString('</span><span class="help-block">')
+                    ->setMessageCloseString('</span>')
+                    ->render($form->get('lastName')); ?>
+    </div>
+    <?php endif; ?>
+    
+    
+    <?php $form->get('password')->setAttribute('class','form-control'); ?>
+    <?php $form->get('password')->setLabelAttributes(array('class' => 'control-label col-lg-2')); ?>
+    <div class="form-group <?php if ($this->formElementErrors($form->get('password'))) echo 'has-error'; ?>">
+        <?php echo $this->formLabel($form->get('password')); ?>
+            <div class="input-group col-lg-3">
+                <span class="input-group-addon glyphicon glyphicon-lock"></span>
+                <?php echo $this->formInput($form->get('password')) ?>
+            </div>
+            <?php echo $this->formElementErrors()
+                    ->setMessageOpenFormat('<span class="help-block">')
+                    ->setMessageSeparatorString('</span><span class="help-block">')
+                    ->setMessageCloseString('</span>')
+                    ->render($form->get('password')); ?>
+    </div>
+    
+    <?php $form->get('passwordVerify')->setAttribute('class','form-control'); ?>
+    <?php $form->get('passwordVerify')->setLabelAttributes(array('class' => 'control-label col-lg-2')); ?>
+    <div class="form-group <?php if ($this->formElementErrors($form->get('passwordVerify'))) echo 'has-error'; ?>">
+        <?php echo $this->formLabel($form->get('passwordVerify')); ?>
+            <div class="col-lg-3">
+                <div class="input-group">
+                    <span class="input-group-addon glyphicon glyphicon-lock"></span>
+                    <?php echo $this->formInput($form->get('passwordVerify')) ?>
+                </div>
+                <?php echo $this->formElementErrors()
+                        ->setMessageOpenFormat('<span class="help-block">')
+                        ->setMessageSeparatorString('</span><span class="help-block">')
+                        ->setMessageCloseString('</span>')
+                        ->render($form->get('passwordVerify')); ?>
+            </div>
+    </div>
+    
+    <?php $form->get('submit')->setAttribute('class', 'btn btn-primary') ?>
+    <div class="form-group">
+        <div class="col-lg-3 col-lg-offset-2">
+            <?php echo $this->formButton($form->get('submit')); ?>
+        </div>
+    </div>
+</fieldset>
+<?php echo $this->form()->closeTag() ?>

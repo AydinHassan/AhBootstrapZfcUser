@@ -1,0 +1,60 @@
+<?php
+$form = $this->loginForm;
+$form->prepare();
+$form->setAttribute('action', $this->url('zfcuser/login'));
+$form->setAttribute('method', 'post');
+$form->setAttribute('class', 'form-horizontal');
+?>
+<?php echo $this->form()->openTag($form) ?>
+<fieldset>
+    <legend>Login</legend>
+    
+    <?php $form->get('identity')->setAttribute('class','form-control'); ?>
+    <?php $form->get('identity')->setLabelAttributes(array('class' => 'control-label col-lg-2')); ?>
+    <div class="form-group <?php if ($this->formElementErrors($form->get('identity'))) echo 'has-error'; ?>">
+        <?php echo $this->formLabel($form->get('identity')); ?>
+            <div class="input-group col-lg-3">
+                <span class="input-group-addon glyphicon glyphicon-user"></span>
+                <?php echo $this->formInput($form->get('identity')) ?>
+            </div>
+            <?php echo $this->formElementErrors()
+                    ->setMessageOpenFormat('<span class="help-block">')
+                    ->setMessageSeparatorString('</span><span class="help-block">')
+                    ->setMessageCloseString('</span>')
+                    ->render($form->get('identity')); ?>
+    </div>
+    
+    <?php $form->get('credential')->setAttribute('class','form-control'); ?>
+    <?php $form->get('credential')->setLabelAttributes(array('class' => 'control-label col-lg-2')); ?>
+    <div class="form-group <?php if ($this->formElementErrors($form->get('credential'))) echo 'has-error'; ?>">
+        <?php echo $this->formLabel($form->get('credential')); ?>
+            <div class="col-lg-3">
+                <div class="input-group">
+                    <span class="input-group-addon glyphicon glyphicon-lock"></span>
+                    <?php echo $this->formInput($form->get('credential')) ?>
+                </div>
+                <?php echo $this->formElementErrors()
+                        ->setMessageOpenFormat('<span class="help-block">')
+                        ->setMessageSeparatorString('</span><span class="help-block">')
+                        ->setMessageCloseString('</span>')
+                        ->render($form->get('credential')); ?>
+            </div>
+    </div>
+    
+    <?php $form->get('submit')->setAttribute('class', 'btn btn-primary') ?>
+    <div class="form-group">
+        <div class="col-lg-3 col-lg-offset-2">
+            <?php echo $this->formButton($form->get('submit')); ?>
+        </div>
+    </div>
+    
+    <?php if ($this->enableRegistration) : ?>
+        <div class="form-group">
+            <label class="control-label col-lg-2"></label>
+            <div class="col-lg-3">Not registered? <a href="<?php echo $this->url('zfcuser/register') . ($this->redirect ? '?redirect=' . $this->redirect : '') ?>">Click here to register!</a></div>
+        </div>
+    <?php endif; ?>
+    
+</fieldset>
+<?php echo $this->form()->closeTag() ?>
+
